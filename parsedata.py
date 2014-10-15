@@ -33,11 +33,11 @@ def ParseCsv():
 
 	data = np.genfromtxt(path, skip_header = n_skip_rows, delimiter = ",", dtype = None)
 
-    # Temporary storage - Gabrielle, pls rename/cleanup
-    student_dict = {}
+	# Temporary storage - Gabrielle, pls rename/cleanup
+	student_dict = {}
 
 	for student in data:
-        student_dict[student[0]] = (student[1], student[2], student[3], student[4])
+		student_dict[student[0]] = (student[1], student[2], student[3], student[4])
 
 
 
