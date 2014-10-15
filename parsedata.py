@@ -26,12 +26,12 @@ def ParseCsv():
 	to turn a string into a variable name
 	'''
 	#specify file path here
-	path = ''
+	path = '/home/gabrielle/wkspace/HackerSchool/pseudodata.csv'
 	n_cols = 5
 	n_skip_rows = 0
 	n_name_col = 1
 
-	data = np.genfromtxt(path, skip_header = n_skip_rows, delimiter = ",", usecols = ([0:n_cols]))
+	data = np.genfromtxt(path, skip_header = n_skip_rows, delimiter = ",", dtype = None)
 
 
 	for i in range(n_cols):
@@ -40,8 +40,10 @@ def ParseCsv():
 		#clean up the name string so that it can be a variable name
 		s = re.sub('[^0-9a-zA-Z_]', '', s)
 		s = re.sub('^[^a-zA-Z_]+', '', s)
+        pdb.set_trace()
 
 		vars()[s] = Student(data[i, n_name_col+1], data[i, n_name_col+2], data[i, n_name_col+3], data[i, n_name_col+4])
+
 
 
 
