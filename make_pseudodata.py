@@ -14,13 +14,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 import csv
+import string
+
 
 w = csv.writer(open("pseudodata.csv", "w"))
 
-
-xk = (-1,1)
-
 def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
+	xk = (-1,1)
+	
+
 	actref_custm = stats.rv_discrete(name = 'actref_custm', values=(xk,actref_dist))
 	senint_custm = stats.rv_discrete(name = 'senint_custm', values=(xk,senint_dist))
 	visver_custm = stats.rv_discrete(name = 'visver_custm', values=(xk,visver_dist))
@@ -32,9 +34,14 @@ def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
 		name = ''.join(random.choice(string.letters) for h in range(14))
 		#generate a learning styles profile
 		act_ref = actref_custm.rvs()
+		print(act_ref)
 		sen_int = senint_custm.rvs()
+		print(sen_int)
 		vis_ver = visver_custm.rvs()
+		print(vis_ver)
 		seq_glo = seqglo_custm.rvs()
+		print(seq_glo)
 		w.writerow([name, act_ref, sen_int, vis_ver, seq_glo])
 
-
+if __name__ == "__main__":
+	MakeData((50,50),(70,30),(80,20),(45,65))
