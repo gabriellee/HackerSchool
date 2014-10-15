@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 '''parse data from csv into people class'''
 import numpy as np
 import re
