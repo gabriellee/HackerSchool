@@ -36,7 +36,7 @@ def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
 	seqglo_custm = stats.rv_discrete(name = 'seqglo_custm', values=(xk,seqglo_dist))
 
 
-	for i in range(100):
+	for i in range(students_to_generate):
 		#generate a fake name
 		name = ''.join(random.choice(string.letters) for h in range(14))
 		#generate a learning styles profile
@@ -58,5 +58,8 @@ if __name__ == "__main__":
 	senint_dist = (.7, .3)
 	visver_dist = (.8, .2)
 	seqglo_dist = (.45, .65)
+
+	# Desired number of students to generate
+	students_to_generate = 100
 
 	MakeData(actref_dist, senint_dist, visver_dist, seqglo_dist)
