@@ -33,18 +33,11 @@ def ParseCsv():
 
 	data = np.genfromtxt(path, skip_header = n_skip_rows, delimiter = ",", dtype = None)
 
+    # Temporary storage - Gabrielle, pls rename/cleanup
+    student_dict = {}
 
-	for i in range(n_cols):
-		s = data[i,n_name_col]
-
-		#clean up the name string so that it can be a variable name
-		s = re.sub('[^0-9a-zA-Z_]', '', s)
-		s = re.sub('^[^a-zA-Z_]+', '', s)
-
-		vars()[s] = Student(data[i][n_name_col+1], data[i][n_name_col+2], data[i][n_name_col+3], data[i][n_name_col+4])
-
-
-
+	for student in data:
+        student_dict[student[0]] = (student[1], student[2], student[3], student[4])
 
 
 
