@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 class Student(act_ref,sen_int,vis_ver,seq_glo):
-	def __init__:
+	def __init__(self):
 		self.act_ref = act_ref
 		self.sen_int = sen_int
 		self.vis_ver = vis_ver
