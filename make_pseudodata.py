@@ -21,7 +21,7 @@ import string
 # Open file for writing
 w = csv.writer(open("pseudodata.csv", "w"))
 
-def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
+def MakeData(number_of_students, actref_dist,senint_dist,visver_dist,seqglo_dist):
 
 	# Range of possible values.
 	# -1 = active/sensing/visual/global
@@ -36,7 +36,7 @@ def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
 	seqglo_custm = stats.rv_discrete(name = 'seqglo_custm', values=(xk,seqglo_dist))
 
 
-	for i in range(students_to_generate):
+	for i in range(number_of_students):
 		#generate a fake name
 		name = ''.join(random.choice(string.letters) for h in range(14))
 		#generate a learning styles profile
@@ -60,6 +60,6 @@ if __name__ == "__main__":
 	seqglo_dist = (.45, .65)
 
 	# Desired number of students to generate
-	students_to_generate = 100
+	number_of_students = 100
 
-	MakeData(actref_dist, senint_dist, visver_dist, seqglo_dist)
+	MakeData(number_of_students, actref_dist, senint_dist, visver_dist, seqglo_dist)
