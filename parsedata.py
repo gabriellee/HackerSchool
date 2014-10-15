@@ -40,9 +40,8 @@ def ParseCsv():
 		#clean up the name string so that it can be a variable name
 		s = re.sub('[^0-9a-zA-Z_]', '', s)
 		s = re.sub('^[^a-zA-Z_]+', '', s)
-        pdb.set_trace()
 
-		vars()[s] = Student(data[i, n_name_col+1], data[i, n_name_col+2], data[i, n_name_col+3], data[i, n_name_col+4])
+		vars()[s] = Student(data[i][n_name_col+1], data[i][n_name_col+2], data[i][n_name_col+3], data[i][n_name_col+4])
 
 
 
