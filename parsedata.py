@@ -30,7 +30,6 @@ def ParseCsv():
 	n_cols = 5
 	n_skip_rows = 0
 	n_name_col = 1
-	n_rows = 7
 
 	data = np.genfromtxt(path, skip_header = n_skip_rows, delimiter = ",", usecols = ([0:n_cols]))
 
