@@ -46,4 +46,4 @@ def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
 		w.writerow([name, act_ref, sen_int, vis_ver, seq_glo])
 
 if __name__ == "__main__":
-	MakeData((50,50),(70,30),(80,20),(45,65))
+	MakeData((.5,.5),(.7,.3),(.8,.2),(.45,.65))
