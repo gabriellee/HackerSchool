@@ -18,13 +18,18 @@ import pickle
 import csv
 import string
 
-
+# Open file for writing
 w = csv.writer(open("pseudodata.csv", "w"))
 
 def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
+
+	# Range of possible values.
+	# -1 = active/sensing/visual/global
+	# +1 = reflective/intuitive/verbal/sequential
 	xk = (-1,1)
 	
-
+	# Create random number generators that spit out numbers
+	# according to their pre-set distributions.
 	actref_custm = stats.rv_discrete(name = 'actref_custm', values=(xk,actref_dist))
 	senint_custm = stats.rv_discrete(name = 'senint_custm', values=(xk,senint_dist))
 	visver_custm = stats.rv_discrete(name = 'visver_custm', values=(xk,visver_dist))
@@ -36,14 +41,22 @@ def MakeData(actref_dist,senint_dist,visver_dist,seqglo_dist):
 		name = ''.join(random.choice(string.letters) for h in range(14))
 		#generate a learning styles profile
 		act_ref = actref_custm.rvs()
-		print(act_ref)
 		sen_int = senint_custm.rvs()
-		print(sen_int)
 		vis_ver = visver_custm.rvs()
-		print(vis_ver)
 		seq_glo = seqglo_custm.rvs()
-		print(seq_glo)
+
+		# Uncomment for debug code
+		print name, act_ref, sen_int, vis_ver, seq_glo
+
+		# Write to file
 		w.writerow([name, act_ref, sen_int, vis_ver, seq_glo])
 
 if __name__ == "__main__":
-	MakeData((.5,.5),(.7,.3),(.8,.2),(.45,.65))
+	# Desired frequency distributions of the data.
+	# All numbers in a set must sum to 1.
+	actref_dist = (.5, .5)
+	senint_dist = (.7, .3)
+	visver_dist = (.8, .2)
+	seqglo_dist = (.45, .65)
+
+	MakeData(actref_dist, senint_dist, visver_dist, seqglo_dist)
