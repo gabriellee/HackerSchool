@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import thinkbayes2
 import thinkplot
 import matplotlib

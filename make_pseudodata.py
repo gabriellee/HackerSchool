@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 '''
 generates fake data based on a given ratio of learning styles
 
