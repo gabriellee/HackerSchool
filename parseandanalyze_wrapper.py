@@ -3,9 +3,9 @@ import parsedata
 import learningstyles_distribution2
 import thinkbayes2
 import thinkplot
+import sys.argv
 
-
-def main(path, sensing_hypo):
+def main(path, active_hypo):
 	'''initializes an instance of a learning styles probability distribution
 	updates the probability distribution based on data
 	checks the strength of the evidence that the distribution in hacker school is substantiallly different
@@ -17,22 +17,22 @@ def main(path, sensing_hypo):
 
 	studentdict = parsedata.ParseCsv(path)
 	sensing_data = [0,0]
-	for student in studentdict:
-		if studentdict[student][0] == 1:
-			sensing_data[0] +=1
+	for student in studentdict
+:		if studentdict[student][0] == 1:
+			active_data[0] +=1
 		elif studentdict[student][1] == -1:
 			sensing_data[1] += 1
 
 
 	
-	sensing_prob = 50
+	active_prob = 50
 
 	#set a uniform prior
-	sensing_dist = learningstyles_distribution2.StyleDist(range(0,101))
+	active_dist = learningstyles_distribution2.StyleDist(range(0,101))
 	#update with new data
-	sensing_dist.Update(sensing_data)
+	active_dist.Update(active_data)
 	#generate graph of probability distribution
-	thinkplot.Pmf(sensing_dist)
+	thinkplot.Pmf(active_dist)
 	#thinkplot.Pmf(learningstyles_distribution2.StyleDist())
 	
 	#Is this substantially different from the overall population?
@@ -41,7 +41,7 @@ def main(path, sensing_hypo):
 	
 	#find the likelihood that hacker school students are as likely to be sensing as a member of the general population
 	suite = learningstyles_distribution2.StyleDist()
-	like_same = suite.Likelihood(sensing_data, sensing_prob)
+	like_same = suite.Likelihood(active_data, active_prob)
 	print('p(D|50%)', like_same)
 
 	#set p(D|~H)
@@ -64,4 +64,6 @@ def main(path, sensing_hypo):
 #	 print check.Likelihood()
 
 if __name__ == "__main__":
+
 	main('/home/gabrielle/wkspace/HackerSchool/pseudodata.csv',50)
+	#main(sys.argv[1],sys.argv[2])
