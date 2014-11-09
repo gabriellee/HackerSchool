@@ -34,7 +34,7 @@ def main(path, active_hypo):
 	sensing_hypo is the initial guess representing the integer probability of a hacker school student being sensing
 	sensing_ratio is the integer probability of any person being sensing
 
-	hypotheses are mu, sigma pairs
+	Ohypotheses are mu, sigma pairs
 	prior distribution is uniform
 	liklihood is computed by evaluating the gaussian distribution of the hypo at the learning number
 
@@ -54,39 +54,9 @@ def main(path, active_hypo):
 	#thinkplot.Pmf(actref_style)
 
 
-	
-	
 
-	
-# 	#Is this substantially different from the overall population?
-# 	#To find out, we will compute Bayes' Factor!
-# 	#p(D|H) / p(D|~H)
-	
-# 	#find the likelihood that hacker school students are as likely to be sensing as a member of the general population
-# 	suite = learningstyles_distribution2.StyleDist()
-# 	like_same = suite.Likelihood(active_data, active_prob)
-# 	print('p(D|50%)', like_same)
-
-# 	#set p(D|~H)
-# 	#I define ~H as the set of all hypotheses (sensing probabilities) excluding sensing_prob (the probability of being sensing in the general population)
-# 	b_uniform = learningstyles_distribution2.StyleDist(range(0,101))
-# 	b_uniform.Remove(sensing_prob)
-# 	b_uniform.Normalize()
-	
-# 	like_diff = b_uniform.SuiteLikelihood(sensing_data)
-# 	bayes_factor = like_same/like_diff
-# 	print('Bayes Factor is ', bayes_factor)
-
-# 	# %matplotlib inline
-# 	#thinkplot.Pmf(sensing_dist)
-# 	#return sensing_dist
-
-# #	 check = learningstyles_distribution2.StyleDist(range(101))
-# #	 check.Update(sensing_data)
-# #	 thinkplot.Pmf(check)
-# #	 print check.Likelihood()
 
 if __name__ == "__main__":
 
-	main('/home/gabrielle/wkspace/HackerSchool/pseudodata.csv',50)
+	main('/home/gabrielle/wkspace/HackerSchool/pseudoscores.csv',100)
 	#main(sys.argv[1],sys.argv[2])
