@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import parsedata
+import parsedata_keepscores
 import learningstyle
 import thinkbayes2
 import thinkplot
@@ -30,17 +30,16 @@ def main(path, active_hypo):
 	checks the strength of the evidence that the distribution in hacker school is substantiallly different
 	
 	path is the path of the csv containing the data
-	sensing data is a tuple in which the first value is the number of people who are sensing and the second value is the number of people who are intuitive in a set of hacker school students
-	sensing_hypo is the initial guess representing the integer probability of a hacker school student being sensing
-	sensing_ratio is the integer probability of any person being sensing
+	actref_data is a list of actref scores of students, negative numbers represent an active score
+	
 
-	Ohypotheses are mu, sigma pairs
+	hypotheses are mu, sigma pairs
 	prior distribution is uniform
 	liklihood is computed by evaluating the gaussian distribution of the hypo at the learning number
 
 	'''
 
-	studentdict = parsedata.ParseCsv(path)
+	studentdict = parsedata_keepscores.ParseCsv(path)
 
 	actref_data = [studentdict[student][1] for student in studentdict]
 	senint_data = [studentdict[student][2] for student in studentdict]
@@ -51,12 +50,12 @@ def main(path, active_hypo):
 
 	actref_style = learningstyle.Style(mus,sigmas)
 	actref_style.UpdateSet(actref_data)
-	#thinkplot.Pmf(actref_style)
+	thinkplot.Pmf(actref_style)
 
 
 
 
 if __name__ == "__main__":
 
-	main('/home/gabrielle/wkspace/HackerSchool/pseudoscores.csv',100)
+	main('/home/gabrielle/wkspace/HackerSchool/Learning Style Questionaire (Responses) - Form Responses 1.csv',100)
 	#main(sys.argv[1],sys.argv[2])
